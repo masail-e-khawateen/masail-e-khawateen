@@ -2,11 +2,18 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { categories, sampleArticles, faqs } from '../lib/data';
 import { ChevronRight, ChevronDown } from 'lucide-react';
+import { useSEO } from '../lib/useSEO';
 
 export default function Category() {
   const { slug } = useParams();
   const category = categories.find(c => c.slug === slug);
   const categoryArticles = sampleArticles.filter(a => a.categoryId === category?.id);
+
+  useSEO({ 
+    title: category?.title ? `${category.title} Masail` : 'Category',
+    description: category?.description,
+    canonicalUrl: `/category/${slug}`
+  });
 
   if (!category) {
     return (
@@ -61,7 +68,7 @@ export default function Category() {
                         {article.reviewStatus === 'Reviewed' ? (
                           <span className="text-xs bg-green-50 text-green-700 px-2 py-1 rounded border border-green-100">Reviewed</span>
                         ) : (
-                          <span className="text-xs bg-amber-50 text-amber-700 px-2 py-1 rounded border border-amber-100">Pending Review</span>
+                          <span className="text-xs bg-amber-50 text-amber-700 px-2 py-1 rounded border border-amber-100">{article.reviewStatus}</span>
                         )}
                       </div>
                       <h3 className="text-xl font-bold text-charcoal mb-3 group-hover:text-primary transition-colors font-urdu" dir="rtl">{article.title}</h3>

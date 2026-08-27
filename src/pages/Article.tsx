@@ -2,11 +2,18 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { categories, sampleArticles } from '../lib/data';
 import { ChevronRight, Share2, AlertTriangle, CheckCircle, Info } from 'lucide-react';
+import { useSEO } from '../lib/useSEO';
 
 export default function Article() {
   const { slug } = useParams();
   const article = sampleArticles.find(a => a.slug === slug);
   const category = categories.find(c => c.id === article?.categoryId);
+  
+  useSEO({ 
+    title: article?.title,
+    description: article?.excerpt,
+    canonicalUrl: `/article/${slug}`
+  });
   
   if (!article || !category) {
     return (
@@ -76,10 +83,10 @@ export default function Article() {
             {isReviewed ? <CheckCircle size={20} className="text-green-600" /> : <AlertTriangle size={20} className="text-amber-600" />}
           </div>
           <div>
-            <h4 className="font-semibold">{isReviewed ? 'Verified by Scholar' : 'Pending Review (Demo Content)'}</h4>
+            <h4 className="font-semibold">{isReviewed ? 'Verified by Scholar' : 'Pending Scholar Review'}</h4>
             <p className="text-sm opacity-90 mt-1">
               {isReviewed 
-                ? `This article has been reviewed for Islamic accuracy by ${article.scholarReviewer}.`
+                ? `This article has been reviewed for Islamic accuracy by ${article.scholarReviewer || 'a qualified scholar'}.`
                 : 'This article is currently a draft/placeholder and has not yet been verified by a qualified scholar.'}
             </p>
           </div>

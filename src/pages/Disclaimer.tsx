@@ -1,7 +1,13 @@
 import React from 'react';
 import { disclaimerContent } from '../lib/config';
+import { useSEO } from '../lib/useSEO';
 
 export default function Disclaimer() {
+  useSEO({ 
+    title: 'Disclaimer',
+    description: 'Read the disclaimer for Masail-e-Khawateen regarding the educational nature of our content.',
+    canonicalUrl: '/disclaimer'
+  });
   return (
     <div className="bg-bg-light min-h-screen py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-white p-10 rounded-3xl shadow-sm border border-gray-100">

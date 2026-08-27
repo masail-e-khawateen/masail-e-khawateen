@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { categories } from '../lib/data';
 import { Send, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { useSEO } from '../lib/useSEO';
 
 export default function Ask() {
+  useSEO({ 
+    title: 'Ask a Question',
+    description: 'Submit your Shar‘i questions anonymously to our scholars.',
+    canonicalUrl: '/ask'
+  });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {

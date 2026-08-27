@@ -2,11 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Search as SearchIcon, ChevronRight } from 'lucide-react';
 import { sampleArticles, categories } from '../lib/data';
+import { useSEO } from '../lib/useSEO';
 
 export default function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
   const [searchTerm, setSearchTerm] = useState(query);
+
+  useSEO({ 
+    title: query ? `Search results for "${query}"` : 'Search Masail',
+    description: 'Search through our authentic database of Islamic rulings and articles.',
+    canonicalUrl: '/search'
+  });
 
   const results = sampleArticles.filter(article => 
     article.title.toLowerCase().includes(query.toLowerCase()) || 

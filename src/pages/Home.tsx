@@ -3,8 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Search, ChevronRight, BookOpen } from 'lucide-react';
 import { categories, sampleArticles, faqs } from '../lib/data';
 import { siteConfig, popularSearches } from '../lib/config';
+import { useSEO } from '../lib/useSEO';
 
 export default function Home() {
+  useSEO({ canonicalUrl: '/' });
   const navigate = useNavigate();
   const featuredArticle = sampleArticles.find(a => a.isFeatured) || sampleArticles[0];
   const latestArticles = [...sampleArticles].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()).slice(0, 3);
@@ -25,7 +27,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-islamic-pattern opacity-40 z-0"></div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 font-urdu leading-tight text-white">
-            {siteConfig.name.split('-').join(' ')}<br/><span className="text-accent">— {siteConfig.tagline.split(' — ')[1] || siteConfig.tagline} —</span>
+            Khawateen ke Shar‘i Masail<br/><span className="text-accent">— Asaan Zaban Mein —</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-urdu opacity-90">
             “{siteConfig.description}”
@@ -177,9 +179,9 @@ export default function Home() {
                       Read More <ChevronRight size={16} className="ml-1" />
                     </span>
                     {article.reviewStatus === 'Reviewed' ? (
-                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-medium">Verified</span>
+                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-medium">Reviewed</span>
                     ) : (
-                      <span className="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-medium">Pending Review</span>
+                      <span className="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-medium">{article.reviewStatus}</span>
                     )}
                   </div>
                 </div>
@@ -223,11 +225,11 @@ export default function Home() {
             </div>
             <div className="p-4">
               <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-xl">👤</div>
-              <h3 className="font-bold text-charcoal text-sm">Scholar Review</h3>
+              <h3 className="font-bold text-charcoal text-sm">Scholar Review Status</h3>
             </div>
             <div className="p-4">
               <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-xl">📅</div>
-              <h3 className="font-bold text-charcoal text-sm">Regularly Updated</h3>
+              <h3 className="font-bold text-charcoal text-sm">Last Reviewed Date</h3>
             </div>
           </div>
           

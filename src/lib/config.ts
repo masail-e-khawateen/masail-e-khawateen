@@ -26,7 +26,11 @@ export const navMenu = [
   { name: 'Namaz', path: '/category/namaz' },
   { name: 'Roza', path: '/category/roza' },
   { name: 'Nikah', path: '/category/nikah' },
-  { name: 'Iddat', path: '/category/iddat' }
+  { name: 'Iddat', path: '/category/iddat' },
+  { name: 'Purdah & Haya', path: '/category/purdah' },
+  { name: 'Pregnancy & Motherhood', path: '/category/pregnancy' },
+  { name: 'Islamic Knowledge', path: '/category/islamic-knowledge' },
+  { name: 'Ask a Question', path: '/ask' }
 ];
 
 export const footerSections = [

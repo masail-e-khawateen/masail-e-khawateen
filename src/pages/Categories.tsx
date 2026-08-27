@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { categories } from '../lib/data';
+import { useSEO } from '../lib/useSEO';
 
 export default function Categories() {
+  useSEO({ 
+    title: 'All Categories',
+    description: 'Browse all categories of Islamic rulings and articles for women.',
+    canonicalUrl: '/categories'
+  });
   return (
     <div className="bg-bg-light min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

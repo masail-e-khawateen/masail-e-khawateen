@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { Send, Mail, MapPin } from 'lucide-react';
 import { siteConfig } from '../lib/config';
+import { useSEO } from '../lib/useSEO';
 
 export default function Contact() {
+  useSEO({ 
+    title: 'Contact Us',
+    description: 'Get in touch with the Masail-e-Khawateen team.',
+    canonicalUrl: '/contact'
+  });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {

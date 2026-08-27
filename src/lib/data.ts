@@ -17,7 +17,7 @@ export interface Article {
   content: string;
   author: string;
   scholarReviewer?: string;
-  reviewStatus: 'Draft' | 'Pending Review' | 'Reviewed' | 'Published';
+  reviewStatus: 'Draft' | 'Pending Scholar Review' | 'Reviewed' | 'Published';
   madhhab?: string;
   sources: string[];
   publishedDate: string;
@@ -150,12 +150,10 @@ export const sampleArticles: Article[] = [
     excerpt: 'Haiz aur Istihaza ke darmiyan farq ko samajhna har aurat ke liye zaroori hai, taake ibadat sahih tariqe se ada ki ja sake.',
     content: 'Haiz ek fitri khoon hai jo aurat ko har mahine aata hai, jabke istihaza bimari ka khoon hai. Haiz mein namaz aur roza maaf hai (roze ki qaza hogi), lekin istihaza mein aurat pak shumar hoti hai aur us par namaz farz hoti hai. (Demo Content - Scholar Review Required)',
     author: 'Admin',
-    scholarReviewer: 'Pending Review',
-    reviewStatus: 'Pending Review',
+    reviewStatus: 'Pending Scholar Review',
     madhhab: 'General (Hanafi/Shafi/Maliki/Hanbali differences exist)',
     sources: ['Placeholder Fiqh Reference'],
-    publishedDate: '2024-03-01',
-    lastReviewedDate: 'Pending',
+    publishedDate: 'Demo Content',
     isFeatured: true,
     views: 1520
   },
@@ -168,10 +166,9 @@ export const sampleArticles: Article[] = [
     excerpt: 'Haiz ke khatam hone par ghusl kis tarah farz hota hai aur us ka sunnat tareeqa kya hai.',
     content: 'Ghusl ke faraiz teen hain: 1. Kulli karna (muh mein pani dalna). 2. Naak mein pani dalna. 3. Poore jism par is tarah pani bahana ke koi baal barabar jagah sookhi na rahe. Aurat ko apne baalon ki jadon tak pani pahunchana zaroori hai. (Demo Content - Scholar Review Required)',
     author: 'Admin',
-    scholarReviewer: 'Pending Review',
-    reviewStatus: 'Pending Review',
+    reviewStatus: 'Pending Scholar Review',
     sources: ['Placeholder Fiqh Reference'],
-    publishedDate: '2024-03-02',
+    publishedDate: 'Demo Content',
   },
   {
     id: '3',
@@ -182,11 +179,9 @@ export const sampleArticles: Article[] = [
     excerpt: 'Kya haiz ke dauran chhuti hui namazon ki qaza lazim hai?',
     content: 'Shariat-e-Islamiya ne khawateen ko asani di hai. Haiz aur nifas ke dauran chhuti hui namazon ki qaza wajib nahi hai. Hazrat Ayesha (RA) se riwayat hai ke humein (haiz ke baad) rozon ki qaza ka hukm diya jata tha, namazon ki qaza ka nahi. (Demo Content - Scholar Review Required)',
     author: 'Admin',
-    reviewStatus: 'Reviewed',
-    scholarReviewer: 'Demo Scholar',
+    reviewStatus: 'Pending Scholar Review',
     sources: ['Sahih Muslim'],
-    publishedDate: '2024-03-05',
-    lastReviewedDate: '2024-03-10'
+    publishedDate: 'Demo Content',
   },
   {
     id: '4',
@@ -197,9 +192,9 @@ export const sampleArticles: Article[] = [
     excerpt: 'Hamila (pregnant) aurat ke liye ramadan ke roze ka kya hukm hai?',
     content: 'Agar hamilah aurat ko apni ya apne bache ki jaan ya sehat ka nuqsan hone ka andesha (fear) ho (kisi tajribakar tabib/doctor ke kehne par ya apne tajribe se), toh us ke liye roza chhorne ki ijazat hai. Baad mein in rozon ki qaza karni hogi. (Demo Content - Scholar Review Required)',
     author: 'Admin',
-    reviewStatus: 'Pending Review',
+    reviewStatus: 'Pending Scholar Review',
     sources: ['Placeholder Fiqh Reference'],
-    publishedDate: '2024-03-08',
+    publishedDate: 'Demo Content',
   }
 ];
 
