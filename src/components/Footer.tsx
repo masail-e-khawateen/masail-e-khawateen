@@ -69,7 +69,7 @@ export default function Footer() {
         <div className="border-t border-gray-100 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
           <div className="flex flex-col items-center md:items-start mb-4 md:mb-0">
             <p>© {new Date().getFullYear()} {siteConfig.copyrightText}</p>
-            <p className="mt-1">Editorial Policy | Scholar Reviewed Content</p>
+            <p className="mt-1"><Link to="/editorial-policy" className="hover:text-accent">Editorial Policy</Link></p>
           </div>
           <p className="max-w-lg text-center md:text-right font-urdu leading-relaxed">
             {siteConfig.footerNotice}
