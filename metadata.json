@@ -1,0 +1,6 @@
+{
+  "name": "Masail-e-Khawateen",
+  "description": "Khawateen ke Shar'i Masail — Asaan Zaban Mein",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #064e3b;
+  --color-primary-light: #065f46;
+  --color-primary-dark: #022c22;
+  --color-secondary: #ffffff;
+  --color-accent: #b45309;
+  --color-accent-light: #d97706;
+  --color-charcoal: #333333;
+  --color-bg-light: #fdfbf7;
+  
+  --font-urdu: 'Noto Nastaliq Urdu', serif;
+  --font-english: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--color-bg-light);
+  color: var(--color-charcoal);
+  font-family: var(--font-english);
+}
+
+.font-urdu {
+  font-family: var(--font-urdu);
+  line-height: 2.2; /* Noto Nastaliq needs more line height */
+}
+
+/* Islamic Geometric Pattern */
+.bg-islamic-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l5 20 20 5-20 5-5 20-5-20-20-5 20-5z' fill='%23064e3b' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
