@@ -19,7 +19,7 @@ export default function Categories() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((cat) => (
-            <Link key={cat.id} to={`/category/${cat.slug}`} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md border border-gray-100 transition-all group flex flex-col items-center text-center">
+            <Link key={cat.id} to={`/${cat.slug}`} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md border border-gray-100 transition-all group flex flex-col items-center text-center">
               <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
                 {cat.icon}
               </div>

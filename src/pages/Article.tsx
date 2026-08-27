@@ -1,20 +1,55 @@
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { categories, sampleArticles } from '../lib/data';
-import { ChevronRight, Share2, AlertTriangle, CheckCircle, Info } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { categories } from '../lib/data';
+import { ChevronRight, Share2, AlertTriangle, CheckCircle, Info, ArrowLeft, ArrowRight } from 'lucide-react';
 import { useSEO } from '../lib/useSEO';
+import { useArticles } from '../lib/store';
 
 export default function Article() {
-  const { slug } = useParams();
-  const article = sampleArticles.find(a => a.slug === slug);
-  const category = categories.find(c => c.id === article?.categoryId);
+  const { categorySlug, articleSlug } = useParams();
+  const navigate = useNavigate();
+  const { publishedArticles, isLoaded } = useArticles();
+  
+  const article = publishedArticles.find(a => a.slug === articleSlug);
+  const category = categories.find(c => c.slug === categorySlug);
   
   useSEO({ 
-    title: article?.title,
-    description: article?.excerpt,
-    canonicalUrl: `/article/${slug}`
+    title: article?.seoTitle || article?.title,
+    description: article?.metaDescription || article?.excerpt,
+    canonicalUrl: article?.canonicalUrl || (article && category ? `/${category.slug}/${article.slug}` : undefined)
   });
   
+  // Structured Data
+  useEffect(() => {
+    if (article && category) {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.id = 'article-structured-data';
+      script.text = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": article.seoTitle || article.title,
+        "description": article.metaDescription || article.excerpt,
+        "author": {
+          "@type": "Person",
+          "name": article.author
+        },
+        "datePublished": article.publishedDate,
+        "dateModified": article.lastUpdatedDate || article.publishedDate
+      });
+      document.head.appendChild(script);
+
+      return () => {
+        const existing = document.getElementById('article-structured-data');
+        if (existing) existing.remove();
+      };
+    }
+  }, [article, category]);
+  
+  if (!isLoaded) {
+    return <div className="text-center py-20">Loading...</div>;
+  }
+
   if (!article || !category) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center">
@@ -24,7 +59,12 @@ export default function Article() {
     );
   }
 
-  const isReviewed = article.reviewStatus === 'Reviewed';
+  const isReviewed = article.reviewStatus === 'Reviewed' || article.reviewStatus === 'Published';
+  const categoryArticles = publishedArticles.filter(a => a.categoryId === category.id);
+  const currentIndex = categoryArticles.findIndex(a => a.id === article.id);
+  const prevArticle = currentIndex > 0 ? categoryArticles[currentIndex - 1] : null;
+  const nextArticle = currentIndex < categoryArticles.length - 1 ? categoryArticles[currentIndex + 1] : null;
+  const relatedArticles = categoryArticles.filter(a => a.id !== article.id).slice(0, 2);
 
   return (
     <div className="bg-bg-light min-h-screen pb-20">
@@ -32,18 +72,20 @@ export default function Article() {
       {/* Article Header */}
       <div className="bg-white border-b border-gray-100 py-10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
+          <div className="flex flex-wrap items-center space-x-2 text-sm text-gray-500 mb-6">
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
             <ChevronRight size={14} />
-            <Link to={`/category/${category.slug}`} className="hover:text-primary transition-colors">{category.title}</Link>
+            <Link to={`/${category.slug}`} className="hover:text-primary transition-colors">{category.title}</Link>
             <ChevronRight size={14} />
             <span className="text-charcoal font-medium truncate">{article.title}</span>
           </div>
           
           <div className="mb-4 flex items-center space-x-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">
-              {article.subcategory}
-            </span>
+            {article.subcategory && (
+              <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">
+                {article.subcategory}
+              </span>
+            )}
           </div>
           
           <h1 className="text-3xl md:text-4xl font-bold text-charcoal mb-6 font-urdu leading-snug" dir="rtl">
@@ -55,111 +97,118 @@ export default function Article() {
           </p>
 
           <div className="flex flex-wrap items-center justify-between py-4 border-t border-gray-100 text-sm text-gray-500">
-            <div className="flex items-center space-x-4 mb-2 sm:mb-0">
+            <div className="flex flex-wrap items-center gap-4 mb-2 sm:mb-0">
               <div>
                 <span className="block text-xs text-gray-400">Published</span>
-                <span className="font-medium text-gray-700">{article.publishedDate}</span>
+                <span className="font-medium text-gray-700">{new Date(article.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
               </div>
-              {isReviewed && article.lastReviewedDate && (
-                <div className="pl-4 border-l border-gray-200">
-                  <span className="block text-xs text-gray-400">Last Reviewed</span>
-                  <span className="font-medium text-gray-700">{article.lastReviewedDate}</span>
+              {article.lastUpdatedDate && (
+                <div>
+                  <span className="block text-xs text-gray-400">Last Updated</span>
+                  <span className="font-medium text-gray-700">{new Date(article.lastUpdatedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 </div>
               )}
             </div>
-            <button className="flex items-center text-primary hover:bg-primary/5 px-3 py-1.5 rounded-lg transition-colors">
-              <Share2 size={16} className="mr-2" /> Share
+            
+            <button className="flex items-center space-x-2 text-gray-500 hover:text-primary transition-colors" onClick={() => navigator.clipboard.writeText(window.location.href).then(() => alert('Link copied to clipboard!'))}>
+              <Share2 size={18} />
+              <span>Share</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Article Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
-        
-        {/* Status Banner */}
-        <div className={`mb-8 p-4 rounded-xl border flex items-start space-x-3 ${isReviewed ? 'bg-green-50 border-green-200 text-green-800' : 'bg-amber-50 border-amber-200 text-amber-800'}`}>
-          <div className="flex-shrink-0 mt-0.5">
+        {/* Verification Banner */}
+        <div className={`mb-10 p-5 rounded-2xl flex items-start space-x-4 border ${isReviewed ? 'bg-green-50 border-green-100' : 'bg-amber-50 border-amber-100'}`}>
+          <div className="mt-1">
             {isReviewed ? <CheckCircle size={20} className="text-green-600" /> : <AlertTriangle size={20} className="text-amber-600" />}
           </div>
           <div>
-            <h4 className="font-semibold">{isReviewed ? 'Verified by Scholar' : 'Pending Scholar Review'}</h4>
+            <h4 className="font-semibold">{isReviewed ? 'Verified by Scholar' : article.reviewStatus}</h4>
             <p className="text-sm opacity-90 mt-1">
               {isReviewed 
                 ? `This article has been reviewed for Islamic accuracy by ${article.scholarReviewer || 'a qualified scholar'}.`
-                : 'This article is currently a draft/placeholder and has not yet been verified by a qualified scholar.'}
+                : 'This article is currently a draft or demo content and has not yet been verified by a qualified scholar.'}
             </p>
           </div>
         </div>
 
-        {/* Content Body */}
-        <div className="prose prose-lg max-w-none prose-headings:text-charcoal prose-headings:font-bold prose-p:text-gray-700 prose-a:text-primary">
-          <div className="font-urdu text-xl leading-loose" dir="rtl">
-            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm mb-8 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-2 h-full bg-primary"></div>
-              <h3 className="text-2xl font-bold text-primary mb-4 mt-0">Quick Answer (Khulasa)</h3>
-              <p className="m-0">{article.content}</p>
-            </div>
-
-            <h3 className="text-2xl font-bold mt-10 mb-4">Detailed Explanation (Tafseeli Jawab)</h3>
-            <p>
-              Yahan tafseeli wazahat aayegi. Yeh ek placeholder section hai jo article ke structure ko darshata hai. Asal content mein yahan mukammal wazahat hogi jo asaan Urdu zaban mein likhi jayegi taake khawateen ko samajhne mein asani ho.
-            </p>
-
-            <h3 className="text-2xl font-bold mt-10 mb-4">Important Points (Aham Nukaat)</h3>
-            <ul className="list-disc pl-6 space-y-2 marker:text-primary">
-              <li>Pehla aham nukta yahan likha jayega.</li>
-              <li>Dusra aham nukta.</li>
-              <li>Teesra aham nukta jo is maslay ko mazeed wazeh karega.</li>
+        {/* Content */}
+        <article className="prose prose-lg prose-headings:text-charcoal prose-a:text-primary max-w-none font-urdu leading-loose text-gray-800" dir="rtl">
+          {article.content}
+        </article>
+        
+        {/* References */}
+        {((article.sources && article.sources.length > 0) || (article.quranReferences && article.quranReferences.length > 0) || (article.hadithReferences && article.hadithReferences.length > 0)) && (
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <h3 className="text-xl font-bold text-charcoal mb-4">References & Sources</h3>
+            <ul className="space-y-2 text-gray-600 list-disc list-inside">
+              {article.quranReferences?.map((q, i) => <li key={`q-${i}`}>{q}</li>)}
+              {article.hadithReferences?.map((h, i) => <li key={`h-${i}`}>{h}</li>)}
+              {article.sources?.map((s, i) => <li key={`s-${i}`}>{s}</li>)}
+              {article.madhhab && <li><strong>Madhhab/Fiqh:</strong> {article.madhhab}</li>}
             </ul>
           </div>
+        )}
+
+        {/* Tags */}
+        {article.tags && article.tags.length > 0 && (
+          <div className="mt-8 flex flex-wrap gap-2">
+            {article.tags.map(tag => (
+              <span key={tag} className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        {/* Disclaimer */}
+        <div className="mt-12 bg-gray-50 p-6 rounded-2xl border border-gray-200">
+          <div className="flex items-center space-x-2 text-charcoal font-bold mb-2">
+            <Info size={18} />
+            <span>Important Disclaimer</span>
+          </div>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            The information provided here is for educational purposes. For sensitive personal issues (like Talaq, Khula, or complex medical conditions), please consult a qualified Mufti or local scholar directly. Individual circumstances can change Islamic rulings.
+          </p>
         </div>
 
-        {/* Metadata section */}
-        <div className="mt-16 pt-8 border-t border-gray-200">
-          
-          {article.madhhab && (
-            <div className="mb-6 flex items-start space-x-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
-              <Info size={20} className="text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <h4 className="font-semibold text-sm text-gray-900 uppercase tracking-wider">Fiqhi Note</h4>
-                <p className="text-sm text-gray-700 mt-1">{article.madhhab}</p>
-              </div>
-            </div>
-          )}
-
-          <div className="mb-8">
-            <h4 className="font-semibold text-charcoal mb-3">Sources / Hawalajat:</h4>
-            <ul className="text-sm text-gray-600 space-y-1">
-              {article.sources.map((source, i) => (
-                <li key={i} className="flex items-start">
-                  <span className="text-primary mr-2">•</span> {source}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="bg-charcoal text-white p-6 rounded-2xl">
-            <h4 className="font-bold text-lg mb-2 font-urdu">Disclaimer</h4>
-            <p className="text-sm text-gray-300 leading-relaxed font-urdu">
-              This content is provided for educational purposes. Personal circumstances may change the ruling. For a personal fatwa, consult a qualified Mufti or Islamic scholar. <Link to="/disclaimer" className="text-accent hover:underline">Read full disclaimer</Link>.
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-      {/* Related Articles */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-gray-100">
-        <h2 className="text-2xl font-bold text-charcoal mb-8 font-urdu">Is Topic Se Mutalliq Mazeed Articles</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {sampleArticles.filter(a => a.id !== article.id).slice(0, 3).map((rel) => (
-            <Link key={rel.id} to={`/article/${rel.slug}`} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow group">
-              <span className="text-xs font-semibold text-primary mb-2 block">{rel.subcategory}</span>
-              <h3 className="text-lg font-bold text-charcoal group-hover:text-primary transition-colors font-urdu leading-snug" dir="rtl">{rel.title}</h3>
+        {/* Prev / Next Navigation */}
+        <div className="mt-12 flex flex-col sm:flex-row justify-between items-center border-t border-gray-200 pt-8 gap-4">
+          {prevArticle ? (
+            <Link to={`/${category.slug}/${prevArticle.slug}`} className="group flex items-center text-primary hover:text-primary-dark transition-colors w-full sm:w-auto justify-start">
+              <ArrowLeft size={18} className="mr-2 group-hover:-translate-x-1 transition-transform flex-shrink-0" />
+              <span className="font-medium truncate max-w-[200px]">{prevArticle.title}</span>
             </Link>
-          ))}
+          ) : <div className="w-full sm:w-auto"></div>}
+          
+          {nextArticle && (
+            <Link to={`/${category.slug}/${nextArticle.slug}`} className="group flex items-center text-primary hover:text-primary-dark transition-colors w-full sm:w-auto justify-end text-right">
+              <span className="font-medium truncate max-w-[200px]">{nextArticle.title}</span>
+              <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform flex-shrink-0" />
+            </Link>
+          )}
         </div>
+
+        {/* Related Articles */}
+        {relatedArticles.length > 0 && (
+          <div className="mt-16">
+            <h3 className="text-2xl font-bold text-charcoal mb-6">Related Articles</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {relatedArticles.map(rel => (
+                <Link key={rel.id} to={`/${category.slug}/${rel.slug}`} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow group">
+                  <h4 className="font-bold text-charcoal mb-2 group-hover:text-primary transition-colors font-urdu" dir="rtl">{rel.title}</h4>
+                  <p className="text-sm text-gray-500 font-urdu line-clamp-2" dir="rtl">{rel.excerpt}</p>
+                </Link>
+              ))}
+            </div>
+            
+            <div className="mt-8 text-center">
+              <Link to={`/${category.slug}`} className="inline-block border border-primary text-primary hover:bg-primary/5 px-6 py-2 rounded-full font-medium transition-colors">
+                View all in {category.title}
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

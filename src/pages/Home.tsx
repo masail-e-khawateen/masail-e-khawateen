@@ -1,15 +1,22 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, ChevronRight, BookOpen } from 'lucide-react';
-import { categories, sampleArticles, faqs } from '../lib/data';
+import { categories, faqs } from '../lib/data';
 import { siteConfig, popularSearches } from '../lib/config';
 import { useSEO } from '../lib/useSEO';
+import { useArticles } from '../lib/store';
 
 export default function Home() {
   useSEO({ canonicalUrl: '/' });
   const navigate = useNavigate();
-  const featuredArticle = sampleArticles.find(a => a.isFeatured) || sampleArticles[0];
-  const latestArticles = [...sampleArticles].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()).slice(0, 3);
+  const { publishedArticles, isLoaded } = useArticles();
+  
+  if (!isLoaded) {
+    return <div className="min-h-screen bg-bg-light flex items-center justify-center">Loading...</div>;
+  }
+  
+  const featuredArticle = publishedArticles.find(a => a.isFeatured) || publishedArticles[0];
+  const latestArticles = [...publishedArticles].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()).slice(0, 3);
   
   const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -83,7 +90,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {categories.map((cat) => (
-              <Link key={cat.id} to={`/category/${cat.slug}`} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md border border-gray-100 transition-all group flex flex-col items-center text-center cursor-pointer">
+              <Link key={cat.id} to={`/${cat.slug}`} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md border border-gray-100 transition-all group flex flex-col items-center text-center cursor-pointer">
                 <div className="w-16 h-16 rounded-full bg-primary/5 text-primary flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
                   {cat.icon}
                 </div>
@@ -96,32 +103,34 @@ export default function Home() {
       </section>
 
       {/* FEATURED SECTION */}
-      <section className="py-16 bg-white border-y border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-primary/5 rounded-2xl p-8 md:p-12 border border-primary/20 relative overflow-hidden flex flex-col md:flex-row gap-8 items-start">
-            <div className="flex-1">
-              <div className="inline-flex items-center space-x-2 bg-accent/20 text-accent-light text-xs font-bold px-3 py-1 rounded uppercase tracking-wider mb-4">
-                <span>⭐ Aaj Ka Masla</span>
+      {featuredArticle && (
+        <section className="py-16 bg-white border-y border-gray-100">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-primary/5 rounded-2xl p-8 md:p-12 border border-primary/20 relative overflow-hidden flex flex-col md:flex-row gap-8 items-start">
+              <div className="flex-1">
+                <div className="inline-flex items-center space-x-2 bg-accent/20 text-accent-light text-xs font-bold px-3 py-1 rounded uppercase tracking-wider mb-4">
+                  <span>⭐ Aaj Ka Masla</span>
+                </div>
+                
+                <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 font-urdu leading-normal" dir="rtl">
+                  {featuredArticle.title}
+                </h2>
+                
+                <p className="text-gray-700 mb-6 font-urdu text-lg leading-relaxed" dir="rtl">
+                  {featuredArticle.excerpt}
+                </p>
+                
+                <Link to={`/${featuredArticle.categoryId}/${featuredArticle.slug}`} className="inline-flex items-center font-bold text-primary hover:text-primary-dark transition-colors text-base underline underline-offset-8">
+                  Read More <ChevronRight size={20} className="ml-1" />
+                </Link>
               </div>
-              
-              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 font-urdu leading-normal" dir="rtl">
-                {featuredArticle.title}
-              </h2>
-              
-              <p className="text-gray-700 mb-6 font-urdu text-lg leading-relaxed" dir="rtl">
-                {featuredArticle.excerpt}
-              </p>
-              
-              <Link to={`/article/${featuredArticle.slug}`} className="inline-flex items-center font-bold text-primary hover:text-primary-dark transition-colors text-base underline underline-offset-8">
-                Read More <ChevronRight size={20} className="ml-1" />
-              </Link>
-            </div>
-            <div className="hidden md:flex w-32 h-32 bg-primary/10 rounded-xl items-center justify-center text-5xl opacity-50 flex-shrink-0">
-              📖
+              <div className="hidden md:flex w-32 h-32 bg-primary/10 rounded-xl items-center justify-center text-5xl opacity-50 flex-shrink-0">
+                📖
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* MOST ASKED QUESTIONS */}
       <section className="py-16 bg-bg-light">
@@ -161,7 +170,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {latestArticles.map((article) => (
-              <Link key={article.id} to={`/article/${article.slug}`} className="group flex flex-col bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all">
+              <Link key={article.id} to={`/${article.categoryId}/${article.slug}`} className="group flex flex-col bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all">
                 <div className="p-6 md:p-8 flex flex-col h-full">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/5 px-3 py-1 rounded-full">

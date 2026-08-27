@@ -1,18 +1,20 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { categories, sampleArticles, faqs } from '../lib/data';
+import { categories, faqs } from '../lib/data';
+import { useArticles } from '../lib/store';
 import { ChevronRight, ChevronDown } from 'lucide-react';
 import { useSEO } from '../lib/useSEO';
 
 export default function Category() {
   const { slug } = useParams();
   const category = categories.find(c => c.slug === slug);
-  const categoryArticles = sampleArticles.filter(a => a.categoryId === category?.id);
+  const { publishedArticles } = useArticles();
+  const categoryArticles = publishedArticles.filter(a => a.categoryId === category?.id);
 
   useSEO({ 
     title: category?.title ? `${category.title} Masail` : 'Category',
     description: category?.description,
-    canonicalUrl: `/category/${slug}`
+    canonicalUrl: `/${slug}`
   });
 
   if (!category) {
@@ -60,7 +62,7 @@ export default function Category() {
               {categoryArticles.length > 0 ? (
                 <div className="space-y-6">
                   {categoryArticles.map(article => (
-                    <Link key={article.id} to={`/article/${article.slug}`} className="block bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/30 transition-all group">
+                    <Link key={article.id} to={`/${category.slug}/${article.slug}`} className="block bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/30 transition-all group">
                       <div className="flex justify-between items-start mb-2">
                         <span className="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded">
                           {article.subcategory}

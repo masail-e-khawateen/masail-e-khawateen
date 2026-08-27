@@ -15,6 +15,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Disclaimer from './pages/Disclaimer';
 import EditorialPolicy from './pages/EditorialPolicy';
+import Admin from './pages/Admin';
 
 export default function App() {
   return (
@@ -22,17 +23,21 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="category/:slug" element={<Category />} />
           <Route path="categories" element={<Categories />} />
-          <Route path="article/:slug" element={<Article />} />
           <Route path="ask" element={<Ask />} />
           <Route path="search" element={<Search />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="disclaimer" element={<Disclaimer />} />
           <Route path="editorial-policy" element={<EditorialPolicy />} />
+          <Route path="admin" element={<Admin />} />
+          
+          {/* Dynamic Routes */}
+          <Route path=":categorySlug" element={<Category />} />
+          <Route path=":categorySlug/:articleSlug" element={<Article />} />
         </Route>
       </Routes>
     </Router>
   );
 }
+

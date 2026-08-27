@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Search as SearchIcon, ChevronRight } from 'lucide-react';
-import { sampleArticles, categories } from '../lib/data';
+import { categories } from '../lib/data';
+import { useArticles } from '../lib/store';
 import { useSEO } from '../lib/useSEO';
 
 export default function Search() {
@@ -15,12 +16,15 @@ export default function Search() {
     canonicalUrl: '/search'
   });
 
-  const results = sampleArticles.filter(article => 
-    article.title.toLowerCase().includes(query.toLowerCase()) || 
-    article.excerpt.toLowerCase().includes(query.toLowerCase()) ||
-    article.content.toLowerCase().includes(query.toLowerCase()) ||
-    article.subcategory.toLowerCase().includes(query.toLowerCase())
-  );
+  const { publishedArticles } = useArticles();
+  const results = publishedArticles.filter(article => {
+    const q = query.toLowerCase();
+    const inTitle = article.title.toLowerCase().includes(q);
+    const inDesc = article.excerpt.toLowerCase().includes(q);
+    const inCategory = (categories.find(c => c.id === article.categoryId)?.title || '').toLowerCase().includes(q);
+    const inTags = article.tags ? article.tags.some(tag => tag.toLowerCase().includes(q)) : false;
+    return inTitle || inDesc || inCategory || inTags;
+  });
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,7 +77,7 @@ export default function Search() {
         {results.length > 0 ? (
           <div className="space-y-6">
             {results.map(article => (
-              <Link key={article.id} to={`/article/${article.slug}`} className="block bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/30 transition-all group">
+              <Link key={article.id} to={`/${article.categoryId}/${article.slug}`} className="block bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/30 transition-all group">
                 <div className="flex justify-between items-start mb-2">
                   <span className="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded">
                     {categories.find(c => c.id === article.categoryId)?.title || 'Category'} - {article.subcategory}
