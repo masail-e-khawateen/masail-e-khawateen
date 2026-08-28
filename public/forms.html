@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Hidden Forms for Netlify</title>
+</head>
+<body>
+  <!-- Contact Form -->
+  <form name="contact" data-netlify="true" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <select name="subject"></select>
+    <textarea name="message"></textarea>
+  </form>
+
+  <!-- Ask/Sawal Form -->
+  <form name="sawal" data-netlify="true" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <select name="category"></select>
+    <textarea name="question"></textarea>
+    <select name="madhhab"></select>
+    <input type="checkbox" name="consent" />
+  </form>
+</body>
+</html>

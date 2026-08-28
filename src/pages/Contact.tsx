@@ -10,10 +10,34 @@ export default function Contact() {
     canonicalUrl: '/contact'
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setError('');
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append('form-name', 'contact');
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        setError('پیغام بھیجنے میں مسئلہ ہوا۔ براہ کرم دوبارہ کوشش کریں۔');
+      }
+    } catch (err) {
+      setError('انٹرنیٹ کنکشن کا مسئلہ ہے۔ براہ کرم دوبارہ کوشش کریں۔');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -60,22 +84,24 @@ export default function Contact() {
               </div>
             ) : (
               <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6" name="contact" data-netlify="true">
+                  {error && (
+                    <div className="bg-red-50 text-red-600 p-4 rounded-xl text-sm font-urdu">
+                      {error}
+                    </div>
+                  )}
+                  <input type="hidden" name="form-name" value="contact" />
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">نام</label>
-                      <input 
-                        required
-                        type="text" 
+                      <input required type="text" name="name" 
                         className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">ای میل</label>
-                      <input 
-                        required
-                        type="email" 
+                      <input required type="email" name="email" 
                         className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                       />
                     </div>
@@ -84,8 +110,7 @@ export default function Contact() {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">موضوع</label>
                     <div className="relative">
-                      <select defaultValue="" 
-                        required
+                      <select name="subject" defaultValue="" required
                         className="w-full px-4 py-3 border border-gray-200 rounded-xl appearance-none bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                       >
                         <option value="" disabled>موضوع منتخب کریں...</option>
@@ -104,16 +129,14 @@ export default function Contact() {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">پیغام</label>
-                    <textarea 
-                      required
+                    <textarea name="message" required
                       rows={5}
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none font-urdu"
                       dir="auto"
                     ></textarea>
                   </div>
 
-                  <button 
-                    type="submit"
+                  <button type="submit" disabled={isSubmitting}
                     className="w-full flex justify-center items-center bg-charcoal hover:bg-black text-white px-8 py-4 rounded-xl font-bold transition-all shadow-md text-lg"
                   >
                     <Send size={20} className="ml-2" />پیغام بھیجیں</button>

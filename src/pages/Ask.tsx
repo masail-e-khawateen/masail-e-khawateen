@@ -10,10 +10,34 @@ export default function Ask() {
     canonicalUrl: '/ask'
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setError('');
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append('form-name', 'sawal');
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        setError('سوال بھیجنے میں مسئلہ ہوا۔ براہ کرم دوبارہ کوشش کریں۔');
+      }
+    } catch (err) {
+      setError('انٹرنیٹ کنکشن کا مسئلہ ہے۔ براہ کرم دوبارہ کوشش کریں۔');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -59,21 +83,25 @@ export default function Ask() {
               <ShieldCheck className="text-primary" size={32} />
             </div>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6" name="sawal" data-netlify="true">
+                            {error && (
+                              <div className="bg-red-50 text-red-600 p-4 rounded-xl text-sm font-urdu mb-4">
+                                {error}
+                              </div>
+                            )}
+                            <input type="hidden" name="form-name" value="sawal" />
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2 font-urdu">نام (اختیاری)</label>
-                  <input 
-                    type="text" 
+                  <input type="text" name="name" 
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                     placeholder="نام ظاہر نہ کریں" dir="rtl"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2 font-urdu">ای میل (اختیاری)</label>
-                  <input 
-                    type="email" 
+                  <input type="email" name="email" 
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                     placeholder="جواب ملنے پر اطلاع کے لیے" dir="rtl"
                   />
@@ -83,8 +111,7 @@ export default function Ask() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2 font-urdu">زمرہ <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <select defaultValue="" 
-                    required
+                  <select name="category" defaultValue="" required
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl appearance-none bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none font-urdu"
                   >
                     <option value="" disabled>ایک زمرہ منتخب کریں...</option>
@@ -101,8 +128,7 @@ export default function Ask() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2 font-urdu">آپ کا سوال <span className="text-red-500">*</span></label>
-                <textarea 
-                  required
+                <textarea name="question" required
                   rows={6}
                   className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none font-urdu resize-none"
                   placeholder="اپنا مسئلہ تفصیل سے لکھیں..." dir="rtl"
@@ -113,7 +139,7 @@ export default function Ask() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2 font-urdu">مسلک (اختیاری)</label>
                 <div className="relative">
-                  <select defaultValue="" className="w-full px-4 py-3 border border-gray-200 rounded-xl appearance-none bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none font-urdu">
+                  <select name="madhhab" defaultValue="" className="w-full px-4 py-3 border border-gray-200 rounded-xl appearance-none bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none font-urdu">
                     <option value="" disabled>اگر آپ کسی مخصوص مسلک کی پیروی کرتے ہیں تو منتخب کریں...</option>
                     <option value="hanafi">حنفی</option>
                     <option value="shafi">شافعی</option>
@@ -145,8 +171,7 @@ export default function Ask() {
               </div>
 
               <div className="pt-4 border-t border-gray-100">
-                <button 
-                  type="submit"
+                <button type="submit" disabled={isSubmitting}
                   className="w-full sm:w-auto flex justify-center items-center bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-xl font-bold transition-all shadow-md hover:shadow-lg font-urdu text-lg"
                 >
                   <Send size={20} className="ml-2" />
