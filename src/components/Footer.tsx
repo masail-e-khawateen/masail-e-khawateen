@@ -71,7 +71,7 @@ export default function Footer() {
             <p>© {new Date().getFullYear()} {siteConfig.copyrightText}</p>
             <p className="mt-1"><Link to="/editorial-policy" className="hover:text-accent">Editorial Policy</Link></p>
           </div>
-          <p className="max-w-lg text-center md:text-right font-urdu leading-relaxed">
+          <p className="max-w-lg text-center md:text-left font-urdu leading-relaxed">
             {siteConfig.footerNotice}
           </p>
         </div>

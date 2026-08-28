@@ -1,12 +1,12 @@
 export const siteConfig = {
   name: "Masail-e-Khawateen",
   tagline: "Khawateen ke Shar‘i Masail — Asaan Zaban Mein",
-  subtitle: "Shar‘i Rahnumai for Women",
-  description: "Haiz, Nifas, Taharat, Namaz, Roza, Nikah, Iddat aur khawateen ki zindagi se mutalliq deeni masail ko samajhne ke liye ek simple aur trustworthy platform.",
+  subtitle: "Khawateen ke liye Shar‘i Rahnumai",
+  description: "حیض، نفاس، طہارت، نماز، روزہ، نکاح، عدت اور خواتین کی روزمرہ زندگی سے متعلق شرعی مسائل کو آسان زبان میں سمجھنے کا مستند پلیٹ فارم۔",
   logoText: "Masail-e-Khawateen",
   contactEmail: "contact@masailekhawateen.example.com",
   copyrightText: "Masail-e-Khawateen. All rights reserved.",
-  footerNotice: "Yeh website sirf taleemi maqasid ke liye hai. Zati masail ke liye kisi Mufti se rabta karein."
+  footerNotice: "یہ ویب سائٹ صرف تعلیمی اور معلوماتی مقاصد کے لیے ہے۔ ذاتی شرعی مسائل کے لیے کسی مستند مفتی یا عالمِ دین سے براہِ راست رجوع کریں۔"
 };
 
 export const socialLinks = {
@@ -19,122 +19,122 @@ export const socialLinks = {
 };
 
 export const navMenu = [
-  { name: 'Home', path: '/' },
-  { name: 'Haiz', path: '/category/haiz' },
-  { name: 'Nifas', path: '/category/nifas' },
-  { name: 'Taharat', path: '/category/taharat' },
-  { name: 'Namaz', path: '/category/namaz' },
-  { name: 'Roza', path: '/category/roza' },
-  { name: 'Nikah', path: '/category/nikah' },
-  { name: 'Iddat', path: '/category/iddat' },
-  { name: 'Purdah & Haya', path: '/category/purdah' },
-  { name: 'Pregnancy & Motherhood', path: '/category/pregnancy' },
-  { name: 'Islamic Knowledge', path: '/category/islamic-knowledge' },
-  { name: 'Ask a Question', path: '/ask' }
+  { name: 'ہوم', path: '/' },
+  { name: 'حیض', path: '/category/haiz' },
+  { name: 'نفاس', path: '/category/nifas' },
+  { name: 'طہارت', path: '/category/taharat' },
+  { name: 'نماز', path: '/category/namaz' },
+  { name: 'روزہ', path: '/category/roza' },
+  { name: 'نکاح', path: '/category/nikah' },
+  { name: 'عدت', path: '/category/iddat' },
+  { name: 'پردہ و حیا', path: '/category/purdah' },
+  { name: 'حمل اور زچگی', path: '/category/pregnancy' },
+  { name: 'اسلامی معلومات', path: '/category/islamic-knowledge' },
+  { name: 'سوال پوچھیں', path: '/ask' }
 ];
 
 export const footerSections = [
   {
-    title: "Quick Links",
+    title: "فوری روابط",
     links: [
-      { name: "Home", path: "/" },
-      { name: "About Us", path: "/about" },
-      { name: "Ask a Question", path: "/ask" },
-      { name: "Contact Us", path: "/contact" }
+      { name: "ہوم", path: "/" },
+      { name: "ہمارے بارے میں", path: "/about" },
+      { name: "سوال پوچھیں", path: "/ask" },
+      { name: "رابطہ کریں", path: "/contact" }
     ]
   },
   {
-    title: "Information",
+    title: "معلومات",
     links: [
-      { name: "Editorial Policy", path: "/editorial-policy" },
-      { name: "Disclaimer", path: "/disclaimer" }
+      { name: "ادارتی پالیسی", path: "/editorial-policy" },
+      { name: "دستبرداری", path: "/disclaimer" }
     ]
   },
   {
-    title: "Categories",
+    title: "زمرہ جات",
     links: [
-      { name: "Haiz & Nifas", path: "/category/haiz" },
-      { name: "Namaz & Roza", path: "/category/namaz" },
-      { name: "Nikah & Iddat", path: "/category/nikah" },
-      { name: "Purdah & Haya", path: "/category/purdah" }
+      { name: "حیض و نفاس", path: "/category/haiz" },
+      { name: "نماز و روزہ", path: "/category/namaz" },
+      { name: "نکاح و عدت", path: "/category/nikah" },
+      { name: "پردہ و حیا", path: "/category/purdah" }
     ]
   }
 ];
 
 export const popularSearches = [
-  'Haiz', 'Ghusl', 'Namaz', 'Roza', 'Istihaza', 'Nifas', 'Iddat', 'Khula'
+  'حیض', 'غسل', 'نماز', 'روزہ', 'استحاضہ', 'نفاس', 'عدت', 'خلع'
 ];
 
 export const aboutContent = {
-  title: "Masail-e-Khawateen Ke Bare Mein",
-  intro: "Masail-e-Khawateen ek aisi koshish hai jahan khawateen apne rozmarrah ke Shar‘i masail, jaise haiz, nifas, taharat, namaz, roza, aur iddat waghaira, ko asaan aur aam faham zaban mein samajh sakti hain.",
+  title: "ہمارے بارے میں",
+  intro: "مسائل خواتین ایک ایسی کوشش ہے جہاں خواتین اپنے روزمرہ کے شرعی مسائل، جیسے حیض، نفاس، طہارت، نماز، روزہ، اور عدت وغیرہ کو آسان اور عام فہم زبان میں سمجھ سکتی ہیں۔",
   sections: [
     {
-      title: "Humara Maqsad (Our Purpose)",
-      content: "Aksar khawateen ko apne makhsoos masail poochne mein jhijhak (hesitation) mehsoos hoti hai, ya unhe asaan zaban mein authentic rehnumai nahi milti. Humara maqsad un tamam zaroori aur bunyadi deeni masail ko ek jagah jama karna hai taake ibadaat mein koi kami na rahe."
+      title: "ہمارا مقصد",
+      content: "اکثر خواتین کو اپنے مخصوص مسائل پوچھنے میں جھجھک محسوس ہوتی ہے، یا انہیں آسان زبان میں مستند رہنمائی نہیں ملتی۔ ہمارا مقصد ان تمام ضروری اور بنیادی شرعی مسائل کو ایک جگہ جمع کرنا ہے تاکہ عبادات میں کوئی کمی نہ رہے۔"
     },
     {
-      title: "Authenticity",
-      content: "Hum koshish karte hain ke yahan faraham ki gayi maloomat mustanad (authentic) fiqhi kitabon aur mustanad ulama ki aara (opinions) par mabni ho. Jahangir differences of opinion hain, wahan hum koshish karte hain ke unhe wazeh taur par bayan kiya jaye."
+      title: "استناد",
+      content: "ہم کوشش کرتے ہیں کہ یہاں فراہم کی گئی معلومات مستند فقہی کتابوں اور مستند علماء کی آراء پر مبنی ہوں۔ جہاں آراء میں اختلاف ہے، وہاں ہم کوشش کرتے ہیں کہ انہیں واضح طور پر بیان کیا جائے۔"
     }
   ],
   importantNote: {
-    title: "Important Note",
-    content: "Yeh platform asaan education ke liye banaya gaya hai. Yeh kisi Mufti ka fatwa nahi hai. Har insaan ke halaat mukhtalif ho sakte hain, is liye hasass (sensitive) masail mein apne qareebi mustanad ulama se rujoo karna zaroori hai."
+    title: "اہم نوٹ",
+    content: "یہ پلیٹ فارم آسان تعلیم کے لیے بنایا گیا ہے۔ یہ کسی مفتی کا فتویٰ نہیں ہے۔ ہر انسان کے حالات مختلف ہو سکتے ہیں، اس لیے حساس مسائل میں اپنے قریبی مستند علماء سے رجوع کرنا ضروری ہے۔"
   }
 };
 
 export const disclaimerContent = {
-  title: "Disclaimer",
-  intro: "Please read the following disclaimer carefully before using the Masail-e-Khawateen website.",
+  title: "دستبرداری",
+  intro: "مسائل خواتین ویب سائٹ استعمال کرنے سے پہلے براہ کرم درج ذیل دستبرداری کو غور سے پڑھیں۔",
   sections: [
     {
-      title: "1. Educational & Informational Purposes Only",
-      content: "The content provided on this website (Masail-e-Khawateen) is for educational and general informational purposes only. It is designed to help Muslim women understand basic Islamic jurisprudence (Fiqh) related to their daily lives in simple language."
+      title: "1. صرف تعلیمی اور معلوماتی مقاصد",
+      content: "اس ویب سائٹ پر فراہم کردہ مواد صرف تعلیمی اور معلوماتی مقاصد کے لیے ہے۔ اسے اس طرح ترتیب دیا گیا ہے کہ مسلم خواتین اپنی روزمرہ زندگی سے متعلق بنیادی اسلامی فقہ کو آسان زبان میں سمجھ سکیں۔"
     },
     {
-      title: "2. Not a Substitute for a Personal Fatwa",
-      content: "The articles, answers, and rulings provided here do not constitute a formal Fatwa (legal Islamic ruling) for your specific, individual situation. Individual circumstances, slight variations in facts, and specific contexts can entirely change an Islamic ruling.",
-      highlight: "For sensitive personal cases—especially concerning Nikah, Talaq, Khula, and complex medical/purification issues—you must consult a qualified Mufti or a reputable Islamic scholar face-to-face or via a recognized Fatwa center."
+      title: "2. فتوے کا متبادل نہیں",
+      content: "یہاں فراہم کردہ مضامین، جوابات اور احکام آپ کی مخصوص انفرادی صورتحال کے لیے باقاعدہ فتویٰ (شرعی حکم) نہیں ہیں۔ انفرادی حالات، حقائق میں معمولی تبدیلی اور مخصوص پس منظر کسی بھی شرعی حکم کو مکمل طور پر تبدیل کر سکتے ہیں۔",
+      highlight: "حساس ذاتی نوعیت کے مسائل—خاص طور پر نکاح، طلاق، خلع اور پیچیدہ طبی یا طہارت کے مسائل کے حوالے سے—آپ کو کسی مستند مفتی یا معتبر عالمِ دین سے براہ راست یا کسی تسلیم شدہ دارالافتاء کے ذریعے رجوع کرنا چاہیے۔"
     },
     {
-      title: "3. Differences of Opinion (Ikhtilaf)",
-      content: "Islamic jurisprudence contains valid differences of opinion among the recognized schools of thought (Madhahib). While we attempt to clearly state which school of thought a ruling belongs to, this website does not claim to represent every valid scholarly opinion."
+      title: "3. فقہی اختلافات",
+      content: "اسلامی فقہ میں تسلیم شدہ مکاتبِ فکر (مذاہب) کے درمیان معتبر اختلافات موجود ہیں۔ ہم کوشش کرتے ہیں کہ واضح کریں کوئی حکم کس مکتبِ فکر سے تعلق رکھتا ہے، لیکن یہ ویب سائٹ ہر معتبر علمی رائے کی نمائندگی کا دعویٰ نہیں کرتی۔"
     },
     {
-      title: "4. Accuracy of Information",
-      content: "While we strive for utmost accuracy and subject our content to review processes, human error is possible. We do not generate religious rulings blindly using AI. We rely on classical texts and contemporary qualified scholars. However, we assume no liability for errors or omissions in the content."
+      title: "4. معلومات کی درستگی",
+      content: "اگرچہ ہم بھرپور درستگی کے لیے کوشاں رہتے ہیں اور ہمارے مواد کا باقاعدہ جائزہ لیا جاتا ہے، تاہم انسانی غلطی کا امکان موجود ہے۔ ہم اے آئی (AI) کی مدد سے آنکھیں بند کر کے مذہبی احکام جاری نہیں کرتے بلکہ کلاسک کتابوں اور موجودہ دور کے مستند علماء پر انحصار کرتے ہیں۔ بہرحال، ہم مواد میں کسی بھی غلطی یا کوتاہی کی کوئی ذمہ داری قبول نہیں کرتے۔"
     }
   ]
 };
 
 export const editorialPolicyContent = {
-  title: "Our Editorial Policy",
-  intro: "Masail-e-Khawateen is committed to providing accurate, trustworthy, and accessible Islamic knowledge for women. Our editorial process follows strict guidelines to ensure the sanctity and correctness of the religious information provided.",
+  title: "ادارتی پالیسی",
+  intro: "مسائل خواتین، خواتین کے لیے درست، مستند اور قابل رسائی اسلامی معلومات فراہم کرنے کے لیے پرعزم ہے۔ ہمارا ادارتی عمل سخت اصولوں کی پیروی کرتا ہے تاکہ مذہبی معلومات کے تقدس اور درستگی کو یقینی بنایا جا سکے۔",
   policies: [
     {
-      title: "1. Accuracy and Authenticity",
-      content: "We aim for the highest level of accuracy. All rulings must be sourced from recognized classical texts (Kutub al-Fiqh) or contemporary qualified scholars."
+      title: "1. درستگی اور استناد",
+      content: "ہماری کوشش اعلیٰ ترین درجے کی درستگی ہے۔ تمام احکام کا حوالہ مستند کتبِ فقہ یا موجودہ دور کے مستند علماء سے لیا جانا ضروری ہے۔"
     },
     {
-      title: "2. No AI-Generated Fatwas",
-      content: "Islamic rulings are never generated blindly by AI. Any AI assistance is strictly limited to translation, formatting, or drafting explanations based *only* on verified source material provided by humans."
+      title: "2. کوئی اے آئی (AI) سے تیار کردہ فتویٰ نہیں",
+      content: "اسلامی احکام کبھی بھی اے آئی کے ذریعے خودکار طور پر تیار نہیں کیے جاتے۔ اے آئی کی مدد صرف ترجمہ، فارمیٹنگ، یا وضاحتیں تیار کرنے تک محدود ہے جو کہ صرف انسانوں کے فراہم کردہ مستند مواد پر مبنی ہوتی ہیں۔"
     },
     {
-      title: "3. Scholar Review Workflow",
-      content: "Articles containing specific religious rulings undergo a review process. Content that has been verified will be marked as \"Reviewed\" along with the date of review. Unverified content is strictly labeled as \"Pending Review\" or \"Demo Content.\""
+      title: "3. علمی جائزے کا طریقہ کار",
+      content: "مخصوص مذہبی احکام پر مشتمل مضامین ایک جائزہ عمل سے گزرتے ہیں۔ جو مواد تصدیق شدہ ہوتا ہے اسے جائزے کی تاریخ کے ساتھ 'جائزہ لیا گیا' کے طور پر نشان زد کیا جاتا ہے۔ غیر تصدیق شدہ مواد کو سختی سے 'علمی جائزے کا منتظر' یا 'نمونہ مواد' کا لیبل دیا جاتا ہے۔"
     },
     {
-      title: "4. Identifying Differences of Opinion",
-      content: "Where valid scholarly differences exist across the accepted schools of thought (Madhahib), we strive to identify them clearly rather than presenting one position as a universal consensus."
+      title: "4. فقہی اختلافات کی نشاندہی",
+      content: "جہاں تسلیم شدہ مکاتبِ فکر (مذاہب) میں معتبر علمی اختلافات موجود ہیں، ہماری کوشش ہوتی ہے کہ انہیں واضح طور پر پیش کریں بجائے اس کے کہ ایک رائے کو عالمگیر اتفاقِ رائے کے طور پر پیش کیا جائے۔"
     },
     {
-      title: "5. Handling Sensitive Issues",
-      content: "Highly sensitive personal cases (e.g., divorce pronouncements, complex medical issues) are not answered definitively online. We will provide general guidance and strongly recommend the user consult a qualified Mufti."
+      title: "5. حساس مسائل سے نمٹنا",
+      content: "انتہائی حساس ذاتی مسائل (مثلاً طلاق کے اعلانات، پیچیدہ طبی مسائل) کا حتمی جواب آن لائن نہیں دیا جاتا۔ ہم عام رہنمائی فراہم کریں گے اور سختی سے سفارش کریں گے کہ صارف کسی مستند مفتی سے رجوع کرے۔"
     },
     {
-      title: "6. Corrections",
-      content: "If an error is identified in any of our articles, we are committed to correcting it immediately upon verification. Users can report corrections through our Contact Us page."
+      title: "6. تصحیح",
+      content: "اگر ہمارے کسی بھی مضمون میں کوئی غلطی پائی جاتی ہے تو ہم تصدیق کے فوراً بعد اسے درست کرنے کے پابند ہیں۔ صارفین ہمارے 'رابطہ کریں' صفحے کے ذریعے تصحیح کے لیے رپورٹ کر سکتے ہیں۔"
     }
   ]
 };

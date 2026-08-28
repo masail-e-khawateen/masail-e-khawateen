@@ -1,0 +1,38 @@
+backend:
+  name: github
+  repo: masail-e-khawateen/masail-e-khawateen
+  branch: main
+
+media_folder: "public/assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "articles"
+    label: "Articles"
+    folder: "src/content/articles"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "ID", name: "id", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Category ID", name: "categoryId", widget: "string" }
+      - { label: "Subcategory", name: "subcategory", widget: "string", required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Content", name: "content", widget: "markdown" }
+      - { label: "Author", name: "author", widget: "string", required: false }
+      - { label: "Review Status", name: "reviewStatus", widget: "select", options: ["Draft", "Pending Scholar Review", "Reviewed", "Published", "Demo Content"] }
+      - { label: "Madhhab", name: "madhhab", widget: "string", required: false }
+      - { label: "Sources", name: "sources", widget: "list", required: false }
+      - { label: "Quran References", name: "quranReferences", widget: "list", required: false }
+      - { label: "Hadith References", name: "hadithReferences", widget: "list", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "Meta Description", name: "metaDescription", widget: "text", required: false }
+      - { label: "Canonical URL", name: "canonicalUrl", widget: "string", required: false }
+      - { label: "Published Date", name: "publishedDate", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Last Updated Date", name: "lastUpdatedDate", widget: "date", format: "YYYY-MM-DD", required: false }
+      - { label: "Is Featured", name: "isFeatured", widget: "boolean", required: false }
+      - { label: "Views", name: "views", widget: "number", required: false }

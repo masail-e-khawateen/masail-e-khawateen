@@ -41,7 +41,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/search" className="bg-accent hover:bg-accent-light text-white font-semibold px-8 py-4 rounded-full transition-all shadow-lg text-center font-urdu text-lg">
-              Apna Masla Search Karein
+              اپنا مسئلہ تلاش کریں
             </Link>
             <Link to="/ask" className="bg-transparent border-2 border-accent text-accent hover:bg-accent/10 font-semibold px-8 py-4 rounded-full transition-all text-center font-urdu text-lg">
               Ask a Question
@@ -61,7 +61,7 @@ export default function Home() {
               type="text"
               name="q"
               className="block w-full pl-12 pr-4 py-4 md:py-5 border-2 border-gray-200 rounded-2xl leading-5 bg-white placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-lg transition-colors font-urdu"
-              placeholder="Apna masla search karein... (e.g. Haiz ke baad ghusl kab karna hai?)"
+              placeholder="اپنا مسئلہ تلاش کریں... (جیسے: حیض کے بعد غسل کب کرنا ہے؟)"
               dir="auto"
             />
             <div className="absolute inset-y-0 right-0 pr-2 flex items-center">
@@ -71,7 +71,7 @@ export default function Home() {
             </div>
           </form>
           <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm text-gray-500">
-            <span className="mr-2 py-1 font-medium text-gray-700">Popular:</span>
+            <span className="ml-2 py-1 font-medium text-gray-700">مقبول موضوعات:</span>
             {popularSearches.map(tag => (
               <Link key={tag} to={`/search?q=${tag.toLowerCase()}`} className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full transition-colors">
                 {tag}
@@ -85,7 +85,7 @@ export default function Home() {
       <section className="py-16 bg-bg-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary font-urdu border-r-4 border-accent pr-4 inline-block">Khawateen ke Aham Masail</h2>
+            <h2 className="text-3xl font-bold text-primary font-urdu border-r-4 border-accent pr-4 inline-block">خواتین کے اہم شرعی مسائل</h2>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
@@ -109,7 +109,7 @@ export default function Home() {
             <div className="bg-primary/5 rounded-2xl p-8 md:p-12 border border-primary/20 relative overflow-hidden flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-1">
                 <div className="inline-flex items-center space-x-2 bg-accent/20 text-accent-light text-xs font-bold px-3 py-1 rounded uppercase tracking-wider mb-4">
-                  <span>⭐ Aaj Ka Masla</span>
+                  <span>⭐ آج کا مسئلہ</span>
                 </div>
                 
                 <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 font-urdu leading-normal" dir="rtl">
@@ -121,7 +121,7 @@ export default function Home() {
                 </p>
                 
                 <Link to={`/${featuredArticle.categoryId}/${featuredArticle.slug}`} className="inline-flex items-center font-bold text-primary hover:text-primary-dark transition-colors text-base underline underline-offset-8">
-                  Read More <ChevronRight size={20} className="ml-1" />
+                  مزید پڑھیں <ChevronRight size={20} className="mr-1 rotate-180" />
                 </Link>
               </div>
               <div className="hidden md:flex w-32 h-32 bg-primary/10 rounded-xl items-center justify-center text-5xl opacity-50 flex-shrink-0">
@@ -136,7 +136,7 @@ export default function Home() {
       <section className="py-16 bg-bg-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-charcoal font-urdu">Khawateen ke Aam Sawalat</h2>
+            <h2 className="text-3xl font-bold text-charcoal font-urdu">خواتین کے عام سوالات</h2>
             <div className="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
           </div>
           
@@ -144,7 +144,7 @@ export default function Home() {
             {faqs.map((faq, index) => (
               <div key={index} className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:border-primary/30 transition-colors cursor-pointer group">
                 <Link to={`/search?q=${encodeURIComponent(faq.question)}`} className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold mr-4 mt-1">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold ml-4 mt-1">
                     {index + 1}
                   </div>
                   <h3 className="font-medium text-charcoal group-hover:text-primary font-urdu text-lg">{faq.question}</h3>
@@ -160,11 +160,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-end mb-10">
             <div>
-              <h2 className="text-3xl font-bold text-charcoal font-urdu">Latest Articles</h2>
+              <h2 className="text-3xl font-bold text-charcoal font-urdu">تازہ مضامین</h2>
               <div className="w-24 h-1 bg-accent mt-4 rounded-full"></div>
             </div>
             <Link to="/search" className="hidden sm:inline-flex items-center text-primary font-medium hover:text-primary-dark">
-              View All <ChevronRight size={20} />
+              سب دیکھیں <ChevronRight size={20} className="rotate-180 mr-1" />
             </Link>
           </div>
           
@@ -185,12 +185,12 @@ export default function Home() {
                   
                   <div className="pt-4 border-t border-gray-100 flex justify-between items-center mt-auto">
                     <span className="inline-flex items-center text-sm font-semibold text-charcoal group-hover:text-primary">
-                      Read More <ChevronRight size={16} className="ml-1" />
+                      مزید پڑھیں <ChevronRight size={16} className="mr-1 rotate-180" />
                     </span>
                     {article.reviewStatus === 'Reviewed' ? (
-                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-medium">Reviewed</span>
+                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-medium">جائزہ لیا گیا</span>
                     ) : (
-                      <span className="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-medium">{article.reviewStatus}</span>
+                      <span className="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-medium">{article.reviewStatus === 'Pending Scholar Review' ? 'علمی جائزے کا منتظر' : article.reviewStatus === 'Draft' ? 'مسودہ' : article.reviewStatus === 'Published' ? 'شائع شدہ' : article.reviewStatus === 'Demo Content' ? 'نمونہ مواد' : article.reviewStatus}</span>
                     )}
                   </div>
                 </div>
@@ -205,12 +205,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-islamic-pattern opacity-10"></div>
         <div className="max-w-3xl mx-auto px-4 relative z-10 text-center">
           <BookOpen size={48} className="text-accent mx-auto mb-6" />
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-urdu text-white">Apna Shar‘i Sawal Poochiye</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-urdu text-white">اپنا شرعی سوال پوچھیے</h2>
           <p className="text-lg text-emerald-50 opacity-90 mb-10 font-urdu leading-relaxed">
-            “Agar aapko apne kisi personal Shar‘i maslay ke bare mein rehnumai chahiye to apna sawal submit karein. Sensitive personal questions should be reviewed by a qualified Mufti or scholar.”
+            اگر آپ کو اپنے کسی ذاتی شرعی مسئلے کے بارے میں رہنمائی چاہیے تو اپنا سوال جمع کروائیں۔ ذاتی اور حساس سوالات کا جائزہ کسی مستند مفتی یا عالمِ دین سے کروایا جانا چاہیے۔
           </p>
           <Link to="/ask" className="inline-block bg-accent hover:bg-accent-light text-white font-bold px-10 py-4 rounded-full transition-colors text-lg shadow-lg font-urdu">
-            Sawal Poochiye
+            سوال پوچھیے
           </Link>
         </div>
       </section>
@@ -219,32 +219,32 @@ export default function Home() {
       <section className="py-16 bg-white border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-charcoal">Authentic Sources & Scholar Review</h2>
+            <h2 className="text-2xl font-bold text-charcoal">مستند مصادر اور علمی جائزہ</h2>
             <div className="w-16 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="p-4">
               <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-xl">📖</div>
-              <h3 className="font-bold text-charcoal text-sm">Quran & Hadith References</h3>
+              <h3 className="font-bold text-charcoal text-sm">قرآن و حدیث کے حوالہ جات</h3>
             </div>
             <div className="p-4">
               <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-xl">⚖️</div>
-              <h3 className="font-bold text-charcoal text-sm">Fiqh/Madhhab Mentioned</h3>
+              <h3 className="font-bold text-charcoal text-sm">فقہ / مکتبِ فکر کا ذکر</h3>
             </div>
             <div className="p-4">
               <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-xl">👤</div>
-              <h3 className="font-bold text-charcoal text-sm">Scholar Review Status</h3>
+              <h3 className="font-bold text-charcoal text-sm">علمی جائزے کی حیثیت</h3>
             </div>
             <div className="p-4">
               <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-xl">📅</div>
-              <h3 className="font-bold text-charcoal text-sm">Last Reviewed Date</h3>
+              <h3 className="font-bold text-charcoal text-sm">آخری جائزے کی تاریخ</h3>
             </div>
           </div>
           
           <div className="mt-10 text-center">
             <Link to="/editorial-policy" className="text-primary hover:text-primary-dark font-medium underline underline-offset-4">
-              Hamari Editorial Policy
+              ہماری ادارتی پالیسی
             </Link>
           </div>
         </div>

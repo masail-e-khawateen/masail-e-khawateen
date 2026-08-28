@@ -99,20 +99,20 @@ export default function Article() {
           <div className="flex flex-wrap items-center justify-between py-4 border-t border-gray-100 text-sm text-gray-500">
             <div className="flex flex-wrap items-center gap-4 mb-2 sm:mb-0">
               <div>
-                <span className="block text-xs text-gray-400">Published</span>
+                <span className="block text-xs text-gray-400">اشاعت</span>
                 <span className="font-medium text-gray-700">{new Date(article.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
               </div>
               {article.lastUpdatedDate && (
                 <div>
-                  <span className="block text-xs text-gray-400">Last Updated</span>
+                  <span className="block text-xs text-gray-400">آخری اپڈیٹ</span>
                   <span className="font-medium text-gray-700">{new Date(article.lastUpdatedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 </div>
               )}
             </div>
             
-            <button className="flex items-center space-x-2 text-gray-500 hover:text-primary transition-colors" onClick={() => navigator.clipboard.writeText(window.location.href).then(() => alert('Link copied to clipboard!'))}>
+            <button className="flex items-center space-x-2 text-gray-500 hover:text-primary transition-colors" onClick={() => navigator.clipboard.writeText(window.location.href).then(() => alert('لنک کاپی ہو گیا!'))}>
               <Share2 size={18} />
-              <span>Share</span>
+              <span>شیئر</span>
             </button>
           </div>
         </div>
@@ -125,11 +125,11 @@ export default function Article() {
             {isReviewed ? <CheckCircle size={20} className="text-green-600" /> : <AlertTriangle size={20} className="text-amber-600" />}
           </div>
           <div>
-            <h4 className="font-semibold">{isReviewed ? 'Verified by Scholar' : article.reviewStatus}</h4>
+            <h4 className="font-semibold">{isReviewed ? 'عالم سے تصدیق شدہ' : article.reviewStatus}</h4>
             <p className="text-sm opacity-90 mt-1">
               {isReviewed 
-                ? `This article has been reviewed for Islamic accuracy by ${article.scholarReviewer || 'a qualified scholar'}.`
-                : 'This article is currently a draft or demo content and has not yet been verified by a qualified scholar.'}
+                ? `اس مضمون کی شرعی درستگی کا جائزہ ${article.scholarReviewer || 'ایک مستند عالم'} نے لیا ہے۔`
+                : 'یہ مضمون فی الحال مسودہ یا نمونہ ہے اور کسی مستند عالم نے اس کی تصدیق نہیں کی ہے۔'}
             </p>
           </div>
         </div>
@@ -142,12 +142,12 @@ export default function Article() {
         {/* References */}
         {((article.sources && article.sources.length > 0) || (article.quranReferences && article.quranReferences.length > 0) || (article.hadithReferences && article.hadithReferences.length > 0)) && (
           <div className="mt-12 pt-8 border-t border-gray-200">
-            <h3 className="text-xl font-bold text-charcoal mb-4">References & Sources</h3>
+            <h3 className="text-xl font-bold text-charcoal mb-4">حوالہ جات اور ماخذ</h3>
             <ul className="space-y-2 text-gray-600 list-disc list-inside">
               {article.quranReferences?.map((q, i) => <li key={`q-${i}`}>{q}</li>)}
               {article.hadithReferences?.map((h, i) => <li key={`h-${i}`}>{h}</li>)}
               {article.sources?.map((s, i) => <li key={`s-${i}`}>{s}</li>)}
-              {article.madhhab && <li><strong>Madhhab/Fiqh:</strong> {article.madhhab}</li>}
+              {article.madhhab && <li><strong>فقہ / مسلک:</strong> {article.madhhab}</li>}
             </ul>
           </div>
         )}
@@ -165,10 +165,10 @@ export default function Article() {
         <div className="mt-12 bg-gray-50 p-6 rounded-2xl border border-gray-200">
           <div className="flex items-center space-x-2 text-charcoal font-bold mb-2">
             <Info size={18} />
-            <span>Important Disclaimer</span>
+            <span>اہم دستبرداری</span>
           </div>
           <p className="text-sm text-gray-600 leading-relaxed">
-            The information provided here is for educational purposes. For sensitive personal issues (like Talaq, Khula, or complex medical conditions), please consult a qualified Mufti or local scholar directly. Individual circumstances can change Islamic rulings.
+            یہاں دی گئی معلومات تعلیمی مقاصد کے لیے ہیں۔ حساس نوعیت کے مسائل (جیسے طلاق، خلع یا پیچیدہ طبی مسائل) کے لیے براہ کرم کسی مستند مفتی یا عالمِ دین سے رجوع کریں۔ انفرادی حالات سے شرعی احکام تبدیل ہو سکتے ہیں۔
           </p>
         </div>
 
@@ -176,7 +176,7 @@ export default function Article() {
         <div className="mt-12 flex flex-col sm:flex-row justify-between items-center border-t border-gray-200 pt-8 gap-4">
           {prevArticle ? (
             <Link to={`/${category.slug}/${prevArticle.slug}`} className="group flex items-center text-primary hover:text-primary-dark transition-colors w-full sm:w-auto justify-start">
-              <ArrowLeft size={18} className="mr-2 group-hover:-translate-x-1 transition-transform flex-shrink-0" />
+              <ArrowRight size={18} className="mr-2 group-hover:-translate-x-1 transition-transform flex-shrink-0" />
               <span className="font-medium truncate max-w-[200px]">{prevArticle.title}</span>
             </Link>
           ) : <div className="w-full sm:w-auto"></div>}
@@ -184,15 +184,15 @@ export default function Article() {
           {nextArticle && (
             <Link to={`/${category.slug}/${nextArticle.slug}`} className="group flex items-center text-primary hover:text-primary-dark transition-colors w-full sm:w-auto justify-end text-right">
               <span className="font-medium truncate max-w-[200px]">{nextArticle.title}</span>
-              <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform flex-shrink-0" />
+              <ArrowLeft size={18} className="mr-2 group-hover:translate-x-1 transition-transform flex-shrink-0" />
             </Link>
           )}
         </div>
 
-        {/* Related Articles */}
+        {/* متعلقہ مضامین */}
         {relatedArticles.length > 0 && (
           <div className="mt-16">
-            <h3 className="text-2xl font-bold text-charcoal mb-6">Related Articles</h3>
+            <h3 className="text-2xl font-bold text-charcoal mb-6">متعلقہ مضامین</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {relatedArticles.map(rel => (
                 <Link key={rel.id} to={`/${category.slug}/${rel.slug}`} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow group">
@@ -204,7 +204,7 @@ export default function Article() {
             
             <div className="mt-8 text-center">
               <Link to={`/${category.slug}`} className="inline-block border border-primary text-primary hover:bg-primary/5 px-6 py-2 rounded-full font-medium transition-colors">
-                View all in {category.title}
+                مزید مضامین - {category.title}
               </Link>
             </div>
           </div>

@@ -15,7 +15,7 @@ export default function EditorialPolicy() {
           {editorialPolicyContent.title}
         </h1>
         
-        <div className="prose prose-lg max-w-none text-gray-700">
+        <div className="prose prose-lg max-w-none text-gray-700" dir="rtl">
           <p className="font-urdu leading-relaxed mb-8 text-lg">
             {editorialPolicyContent.intro}
           </p>

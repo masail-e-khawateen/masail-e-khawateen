@@ -38,11 +38,10 @@ export default function Header() {
                 onMouseEnter={() => setShowMore(true)}
                 onMouseLeave={() => setShowMore(false)}
               >
-                <button className="flex items-center text-sm font-medium text-charcoal hover:text-accent transition-colors">
-                  More <ChevronDown size={16} className="ml-1" />
+                <button className="flex items-center text-sm font-medium text-charcoal hover:text-accent transition-colors">مزید<ChevronDown size={16} className="mr-1" />
                 </button>
                 {showMore && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 border border-gray-100 z-50">
+                  <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 border border-gray-100 z-50">
                     {moreNav.map((link) => (
                       <Link
                         key={link.name}
@@ -57,7 +56,7 @@ export default function Header() {
               </div>
             )}
             
-            <div className="flex items-center space-x-4 pl-4 border-l border-primary/20">
+            <div className="flex items-center space-x-4 pr-4 border-r border-primary/20">
               <Link to="/search" className="text-charcoal hover:text-accent transition-colors">
                 <Search size={20} />
               </Link>

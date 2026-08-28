@@ -13,7 +13,7 @@ export default function Categories() {
     <div className="bg-bg-light min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-3xl font-bold text-charcoal font-urdu">All Categories</h1>
+          <h1 className="text-3xl font-bold text-charcoal font-urdu">تمام زمرہ جات</h1>
           <div className="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
         </div>
         

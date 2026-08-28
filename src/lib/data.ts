@@ -36,113 +36,113 @@ export interface Article {
 export const categories: Category[] = [
   {
     id: 'haiz',
-    title: 'Haiz',
+    title: 'حیض',
     slug: 'haiz',
     icon: '🩸',
-    description: 'Haiz se mutalliq bunyadi aur rozmarrah Shar‘i masail.',
+    description: 'حیض سے متعلق بنیادی اور روزمرہ کے شرعی مسائل۔',
     subcategories: [
-      'Haiz kya hai?', 'Haiz ki muddat', 'Haiz ki alamat', 'Haiz aur namaz', 
-      'Haiz aur roza', 'Haiz aur Quran', 'Haiz aur zikr', 'Haiz ke baad ghusl', 
-      'Istihaza', 'Haiz se related common questions'
+      'حیض کیا ہے؟', 'حیض کی مدت', 'حیض کی علامات', 'حیض اور نماز', 
+      'حیض اور روزہ', 'حیض اور قرآن', 'حیض اور ذکر', 'حیض کے بعد غسل', 
+      'استحاضہ', 'حیض سے متعلق عام سوالات'
     ]
   },
   {
     id: 'nifas',
-    title: 'Nifas',
+    title: 'نفاس',
     slug: 'nifas',
     icon: '🤱',
-    description: 'Delivery aur nifas ke dauran ibadat aur taharat ke masail.',
+    description: 'زچگی اور نفاس کے دوران عبادت اور طہارت کے مسائل۔',
     subcategories: [
-      'Nifas kya hai?', 'Nifas ki muddat', 'Nifas aur namaz', 'Nifas aur roza', 
-      'Nifas ke baad ghusl', 'Delivery ke baad bleeding', 'Nifas ke common questions'
+      'نفاس کیا ہے؟', 'نفاس کی مدت', 'نفاس اور نماز', 'نفاس اور روزہ', 
+      'Nifas ke baad ghusl', 'زچگی کے بعد خون', 'نفاس کے عام سوالات'
     ]
   },
   {
     id: 'taharat',
-    title: 'Taharat & Ghusl',
+    title: 'طہارت و غسل',
     slug: 'taharat',
     icon: '🚿',
-    description: 'Paaki, napaaki, wuzu aur ghusl ke aham masail.',
+    description: 'پاکی، ناپاکی، وضو اور غسل کے اہم مسائل۔',
     subcategories: [
-      'Ghusl ke masail', 'Ghusl ka tareeqa', 'Wuzu', 'Wuzu ke masail', 
-      'Paaki aur napaaki', 'Kapron ki taharat', 'Mani, Mazi aur Wadi', 'Doubt/Waswasa related questions'
+      'غسل کے مسائل', 'غسل کا طریقہ', 'وضو', 'وضو کے مسائل', 
+      'پاکی اور ناپاکی', 'کپڑوں کی طہارت', 'مذی اور ودی', 'وسوسوں سے متعلق سوالات'
     ]
   },
   {
     id: 'namaz',
-    title: 'Namaz',
+    title: 'نماز',
     slug: 'namaz',
     icon: '🕌',
-    description: 'Khawateen ki namaz aur us se mutalliq masail.',
+    description: 'خواتین کی نماز اور اس سے متعلق مسائل۔',
     subcategories: [
-      'Khawateen ki namaz', 'Namaz ke faraiz', 'Namaz ke wajibaat', 'Sajda-e-sahw', 
-      'Qaza namaz', 'Haiz ke baad namaz', 'Nifas ke baad namaz', 'Travel prayer'
+      'خواتین کی نماز', 'نماز کے فرائض', 'نماز کے واجبات', 'سجدہ سہو', 
+      'قضا نماز', 'حیض کے بعد نماز', 'نفاس کے بعد نماز', 'سفر کی نماز'
     ]
   },
   {
     id: 'roza',
-    title: 'Roza',
+    title: 'روزہ',
     slug: 'roza',
     icon: '🌙',
-    description: 'Ramadan, qaza roza aur khawateen ke rozay ke masail.',
+    description: 'رمضان، قضا روزے اور خواتین کے روزے سے متعلق مسائل۔',
     subcategories: [
-      'Ramadan', 'Haiz aur roza', 'Nifas aur roza', 'Qaza roze', 
-      'Fidya', 'Pregnancy aur roza', 'Breastfeeding aur roza', 'Roza tootne ke masail'
+      'رمضان', 'حیض اور روزہ', 'نفاس اور روزہ', 'قضا روزے', 
+      'فدیہ', 'حمل اور روزہ', 'دودھ پلانا اور روزہ', 'روزہ ٹوٹنے کے مسائل'
     ]
   },
   {
     id: 'nikah',
-    title: 'Nikah',
+    title: 'نکاح',
     slug: 'nikah',
     icon: '💍',
-    description: 'Nikah, mahr aur miya-biwi ke Shar‘i huqooq.',
+    description: 'نکاح، مہر اور میاں بیوی کے شرعی حقوق۔',
     subcategories: [
-      'Nikah', 'Mahr', 'Nikah ki sharaait', 'Miya-biwi ke huqooq', 
-      'Biwi ke huqooq', 'Shohar ke huqooq', 'Married life etiquette'
+      'نکاح', 'مہر', 'نکاح کی شرائط', 'میاں بیوی کے حقوق', 
+      'بیوی کے حقوق', 'شوہر کے حقوق', 'ازدواجی زندگی کے آداب'
     ]
   },
   {
     id: 'iddat',
-    title: 'Iddat & Khula',
+    title: 'عدت و خلع',
     slug: 'iddat',
     icon: '⚖️',
-    description: 'Talaq, khula aur iddat ke bunyadi masail.',
+    description: 'طلاق، خلع اور عدت کے بنیادی مسائل۔',
     subcategories: [
-      'Talaq', 'Khula', 'Iddat', 'Talaq ki iddat', 
-      'Widow\'s iddat', 'Iddat ke basic rules', 'Iddat se related questions'
+      'طلاق', 'خلع', 'عدت', 'طلاق کی عدت', 
+      'بیوہ کی عدت', 'عدت کے بنیادی اصول', 'عدت سے متعلق سوالات'
     ]
   },
   {
     id: 'purdah',
-    title: 'Purdah & Haya',
+    title: 'پردہ و حیا',
     slug: 'purdah',
     icon: '🧕',
-    description: 'Hijab, mahram/non-mahram aur haya se mutalliq guidance.',
+    description: 'حجاب، محرم و نامحرم اور حیا سے متعلق رہنمائی۔',
     subcategories: [
-      'Hijab', 'Purdah', 'Mahram', 'Non-mahram', 
-      'Clothing', 'Makeup', 'Perfume', 'Jewellery', 'Social media & modesty'
+      'حجاب', 'پردہ', 'محرم', 'نامحرم', 
+      'لباس', 'میک اپ', 'عطر', 'زیورات', 'سوشل میڈیا اور حیا'
     ]
   },
   {
     id: 'pregnancy',
-    title: 'Pregnancy & Motherhood',
+    title: 'حمل اور زچگی',
     slug: 'pregnancy',
     icon: '🤰',
-    description: 'Hamal, breastfeeding aur motherhood se mutalliq masail.',
+    description: 'حمل، دودھ پلانے اور ماں بننے سے متعلق مسائل۔',
     subcategories: [
-      'Pregnancy & worship', 'Pregnancy & fasting', 'Breastfeeding', 'Postpartum guidance', 
-      'Newborn-related Islamic guidance', 'Aqeeqah', 'Motherhood in Islam'
+      'حمل اور عبادات', 'حمل اور روزہ', 'دودھ پلانا', 'زچگی کے بعد کی رہنمائی', 
+      'نومولود کے اسلامی احکام', 'عقیقہ', 'اسلام میں ماں کا مقام'
     ]
   },
   {
     id: 'islamic-knowledge',
-    title: 'Islamic Knowledge',
+    title: 'اسلامی معلومات',
     slug: 'islamic-knowledge',
     icon: '📚',
-    description: 'Khawateen se related Quran, Hadith aur Islamic knowledge.',
+    description: 'خواتین سے متعلق قرآن، حدیث اور اسلامی معلومات۔',
     subcategories: [
-      'Quranic guidance', 'Hadith', 'Sahabiyat', 'Islamic history', 
-      'Muslim women in Islamic history', 'Sunnah', 'Islamic manners'
+      'قرآنی رہنمائی', 'حدیث', 'صحابیات', 'اسلامی تاریخ', 
+      'اسلامی تاریخ میں مسلمان خواتین', 'سنت', 'اسلامی آداب'
     ]
   }
 ];
@@ -150,12 +150,12 @@ export const categories: Category[] = [
 export const sampleArticles: Article[] = [
   {
     id: '1',
-    title: 'Haiz aur Istihaza: Bunyadi Farq',
+    title: 'حیض اور استحاضہ: بنیادی فرق',
     slug: 'haiz-aur-istihaza-bunyadi-farq',
     categoryId: 'haiz',
-    subcategory: 'Istihaza',
-    excerpt: 'Haiz aur Istihaza ke darmiyan farq ko samajhna har aurat ke liye zaroori hai, taake ibadat sahih tariqe se ada ki ja sake.',
-    content: 'Haiz ek fitri khoon hai jo aurat ko har mahine aata hai, jabke istihaza bimari ka khoon hai. Haiz mein namaz aur roza maaf hai (roze ki qaza hogi), lekin istihaza mein aurat pak shumar hoti hai aur us par namaz farz hoti hai. (Demo Content - Scholar Review Required)',
+    subcategory: 'استحاضہ',
+    excerpt: 'حیض اور استحاضہ کے درمیان فرق کو سمجھنا ہر عورت کے لیے ضروری ہے، تاکہ عبادت صحیح طریقے سے ادا کی جا سکے۔',
+    content: 'حیض ایک فطری خون ہے جو عورت کو ہر مہینے آتا ہے، جبکہ استحاضہ بیماری کا خون ہے۔ حیض میں نماز اور روزہ معاف ہے (روزے کی قضا ہوگی)، لیکن استحاضہ میں عورت پاک شمار ہوتی ہے اور اس پر نماز فرض ہوتی ہے۔ (Demo Content — Scholar Review Required)',
     author: 'Admin',
     reviewStatus: 'Published',
     madhhab: 'General (Hanafi/Shafi/Maliki/Hanbali differences exist)',
@@ -173,12 +173,12 @@ export const sampleArticles: Article[] = [
   },
   {
     id: '2',
-    title: 'Haiz ke Baad Ghusl Ka Tareeqa',
+    title: 'حیض کے بعد غسل کا طریقہ',
     slug: 'haiz-ke-baad-ghusl-ka-tareeqa',
     categoryId: 'taharat',
-    subcategory: 'Ghusl ka tareeqa',
-    excerpt: 'Haiz ke khatam hone par ghusl kis tarah farz hota hai aur us ka sunnat tareeqa kya hai.',
-    content: 'Ghusl ke faraiz teen hain: 1. Kulli karna (muh mein pani dalna). 2. Naak mein pani dalna. 3. Poore jism par is tarah pani bahana ke koi baal barabar jagah sookhi na rahe. Aurat ko apne baalon ki jadon tak pani pahunchana zaroori hai. (Demo Content - Scholar Review Required)',
+    subcategory: 'غسل کا طریقہ',
+    excerpt: 'حیض کے ختم ہونے پر غسل کس طرح فرض ہوتا ہے اور اس کا سنت طریقہ کیا ہے۔',
+    content: 'غسل کے فرائض تین ہیں: 1. کلی کرنا (منہ میں پانی ڈالنا)۔ 2. ناک میں پانی ڈالنا۔ 3. پورے جسم پر اس طرح پانی بہانا کہ کوئی بال برابر جگہ سوکھی نہ رہے۔ عورت کو اپنے بالوں کی جڑوں تک پانی پہنچانا ضروری ہے۔ (Demo Content — Scholar Review Required)',
     author: 'Admin',
     reviewStatus: 'Published',
     sources: ['Placeholder Fiqh Reference'],
@@ -190,12 +190,12 @@ export const sampleArticles: Article[] = [
   },
   {
     id: '3',
-    title: 'Haiz mein Namaz ka Hukm',
+    title: 'حیض اور نماز',
     slug: 'haiz-mein-namaz-ka-hukm',
     categoryId: 'namaz',
-    subcategory: 'Haiz aur namaz',
-    excerpt: 'Kya haiz ke dauran chhuti hui namazon ki qaza lazim hai? Shariat is bare mein kya kehti hai?',
-    content: 'Shariat-e-Islamiya ne khawateen ko asani di hai. Haiz aur nifas ke dauran chhuti hui namazon ki qaza wajib nahi hai. Hazrat Ayesha (RA) se riwayat hai ke humein (haiz ke baad) rozon ki qaza ka hukm diya jata tha, namazon ki qaza ka nahi. (Demo Content - Scholar Review Required)',
+    subcategory: 'حیض اور نماز',
+    excerpt: 'کیا حیض کے دوران چھوٹی ہوئی نمازوں کی قضا لازم ہے؟ شریعت اس بارے میں کیا کہتی ہے؟',
+    content: 'شریعتِ اسلامیہ نے خواتین کو آسانی دی ہے۔ حیض اور نفاس کے دوران چھوٹی ہوئی نمازوں کی قضا واجب نہیں ہے۔ حضرت عائشہ (رضی اللہ عنہا) سے روایت ہے کہ ہمیں (حیض کے بعد) روزوں کی قضا کا حکم دیا جاتا تھا، نمازوں کی قضا کا نہیں۔ (Demo Content — Scholar Review Required)',
     author: 'Admin',
     reviewStatus: 'Published',
     sources: ['Sahih Muslim'],
@@ -210,43 +210,43 @@ export const sampleArticles: Article[] = [
 
 export const faqs = [
   {
-    question: "Haiz aur istihaza mein kya farq hai?",
-    answer: "Haiz aam taur par aane wala fitri khoon hai jis mein ibadat ki ijazat nahi hoti. Istihaza bimari ki wajah se aane wala be-qaida khoon hai, is haalat mein aurat pak shumar hoti hai aur use namaz/roza ada karna hota hai. (Demo Content)"
+    question: "حیض اور استحاضہ میں کیا فرق ہے؟",
+    answer: "حیض عام طور پر آنے والا فطری خون ہے جس میں عبادت کی اجازت نہیں ہوتی۔ استحاضہ بیماری کی وجہ سے آنے والا بے قاعدہ خون ہے، اس حالت میں عورت پاک شمار ہوتی ہے اور اسے نماز/روزہ ادا کرنا ہوتا ہے۔ (نمونہ مواد)"
   },
   {
-    question: "Haiz khatam hone ka pata kaise chale?",
-    answer: "Jab khoon ka rang mukammal taur par safed ya clear ho jaye (ya tissue paper par koi dhabba na rahe), toh haiz khatam shumar hota hai. (Demo Content)"
+    question: "حیض ختم ہونے کا پتا کیسے چلے؟",
+    answer: "جب خون کا رنگ مکمل طور پر سفید یا صاف ہو جائے (یا ٹشو پیپر پر کوئی دھبہ نہ رہے)، تو حیض ختم شمار ہوتا ہے۔ (نمونہ مواد)"
   },
   {
-    question: "Haiz mein namaz ka kya hukm hai?",
-    answer: "Haiz ki halat mein namaz padhna mana hai, aur baad mein inki qaza bhi nahi karni hoti."
+    question: "حیض میں نماز کا کیا حکم ہے؟",
+    answer: "حیض کی حالت میں نماز پڑھنا منع ہے، اور بعد میں ان کی قضا بھی نہیں کرنی ہوتی۔"
   },
   {
-    question: "Haiz mein roza ka kya hukm hai?",
-    answer: "Haiz ki halat mein roza nahi rakha ja sakta, lekin ramadan ke un rozon ki qaza baad mein rakhna farz hai."
+    question: "حیض میں روزے کا کیا حکم ہے؟",
+    answer: "حیض کی حالت میں روزہ نہیں رکھا جا سکتا، لیکن رمضان کے ان روزوں کی قضا بعد میں رکھنا فرض ہے۔"
   },
   {
-    question: "Ghusl kab farz hota hai?",
-    answer: "Haiz (menstruation) khatam hone par, nifas (postnatal bleeding) khatam hone par, aur janabat (marital relations) ke baad ghusl farz hota hai."
+    question: "غسل کب فرض ہوتا ہے؟",
+    answer: "حیض ختم ہونے پر، نفاس ختم ہونے پر، اور جنابت کے بعد غسل فرض ہوتا ہے۔"
   },
   {
-    question: "Nifas kitne din hota hai?",
-    answer: "Nifas (bacha paida hone ke baad ka khoon) ki ziyada se ziyada muddat 40 din hai (Hanafi fiqh ke mutabiq). Agar 40 din se pehle khoon band ho jaye toh ghusl kar ke ibadat shuru karni chahiye."
+    question: "نفاس کتنے دن ہوتا ہے؟",
+    answer: "نفاس کی زیادہ سے زیادہ مدت 40 دن ہے (حنفی فقہ کے مطابق)۔ اگر 40 دن سے پہلے خون بند ہو جائے تو غسل کر کے عبادت شروع کرنی چاہیے۔"
   },
   {
-    question: "Iddat kya hai?",
-    answer: "Talaq ya shohar ke inteqal ke baad aurat ke liye ek makhsoos muddat tak intezar karna aur dusra nikah na karna iddat kehlata hai."
+    question: "عدت کیا ہے؟",
+    answer: "طلاق یا شوہر کے انتقال کے بعد عورت کے لیے ایک مخصوص مدت تک انتظار کرنا اور دوسرا نکاح نہ کرنا عدت کہلاتا ہے۔"
   },
   {
-    question: "Khula kya hota hai?",
-    answer: "Jab aurat apne shohar se talaq ka mutalba kare (aam taur par mahr wapas kar ke), aur shohar us par raazi ho jaye, toh ise Khula kehte hain."
+    question: "خلع کیا ہوتا ہے؟",
+    answer: "جب عورت اپنے شوہر سے طلاق کا مطالبہ کرے (عام طور پر مہر واپس کر کے)، اور شوہر اس پر راضی ہو جائے، تو اسے خلع کہتے ہیں۔"
   },
   {
-    question: "Pregnancy mein roza rakhne ka kya hukm hai?",
-    answer: "Agar pregnancy mein roza rakhne se maa ya bache ko nuqsan ka andesha ho, toh roza chhorne ki ijazat hai. In rozon ki baad mein qaza karni hogi."
+    question: "حمل کے دوران روزہ رکھنے کا کیا حکم ہے؟",
+    answer: "اگر حمل کے دوران روزہ رکھنے سے ماں یا بچے کو نقصان کا اندیشہ ہو، تو روزہ چھوڑنے کی اجازت ہے۔ ان روزوں کی بعد میں قضا کرنی ہوگی۔"
   },
   {
-    question: "Breastfeeding ke dauran roza?",
-    answer: "Agar doodh pilane wali maa ko bache ke doodh mein kami hone ya apni sehat kharab hone ka dar ho toh woh roza chhor sakti hai aur baad mein qaza karegi."
+    question: "دودھ پلانے کے دوران روزہ؟",
+    answer: "اگر دودھ پلانے والی ماں کو بچے کے دودھ میں کمی ہونے یا اپنی صحت خراب ہونے کا ڈر ہو تو وہ روزہ چھوڑ سکتی ہے اور بعد میں قضا کرے گی۔"
   }
 ];

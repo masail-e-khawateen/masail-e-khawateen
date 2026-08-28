@@ -15,7 +15,7 @@ export default function Disclaimer() {
           {disclaimerContent.title}
         </h1>
         
-        <div className="prose prose-lg max-w-none text-gray-700">
+        <div className="prose prose-lg max-w-none text-gray-700" dir="rtl">
           <p className="font-urdu leading-relaxed">
             {disclaimerContent.intro}
           </p>

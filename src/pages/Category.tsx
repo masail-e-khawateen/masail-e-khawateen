@@ -20,8 +20,8 @@ export default function Category() {
   if (!category) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-        <h1 className="text-3xl font-bold text-charcoal mb-4">Category not found</h1>
-        <Link to="/" className="text-primary hover:underline">Return to Home</Link>
+        <h1 className="text-3xl font-bold text-charcoal mb-4">زمرہ نہیں ملا</h1>
+        <Link to="/" className="text-primary hover:underline">ہوم پر واپس جائیں</Link>
       </div>
     );
   }
@@ -33,8 +33,8 @@ export default function Category() {
       <div className="bg-white border-b border-gray-100 py-12">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
-            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
-            <ChevronRight size={14} />
+            <Link to="/" className="hover:text-primary transition-colors">ہوم</Link>
+            <ChevronLeft size={14} />
             <span className="text-charcoal font-medium">{category.title}</span>
           </div>
           
@@ -57,7 +57,7 @@ export default function Category() {
           <div className="lg:col-span-2 space-y-12">
             
             <section>
-              <h2 className="text-2xl font-bold text-charcoal mb-6 border-b border-gray-200 pb-2">Articles in {category.title}</h2>
+              <h2 className="text-2xl font-bold text-charcoal mb-6 border-b border-gray-200 pb-2">مضامین - {category.title}</h2>
               
               {categoryArticles.length > 0 ? (
                 <div className="space-y-6">
@@ -76,15 +76,15 @@ export default function Category() {
                       <h3 className="text-xl font-bold text-charcoal mb-3 group-hover:text-primary transition-colors font-urdu" dir="rtl">{article.title}</h3>
                       <p className="text-gray-600 text-sm font-urdu line-clamp-2" dir="rtl">{article.excerpt}</p>
                       <div className="mt-4 flex items-center text-primary font-medium text-sm">
-                        Read full article <ChevronRight size={16} className="ml-1" />
+                        Read full article <ChevronLeft size={16} className="mr-1 rotate-180" />
                       </div>
                     </Link>
                   ))}
                 </div>
               ) : (
                 <div className="bg-white p-8 rounded-2xl border border-gray-100 text-center">
-                  <p className="text-gray-500 font-urdu mb-4">No articles found in this category yet.</p>
-                  <Link to="/ask" className="text-primary hover:underline font-medium">Ask a question about {category.title}</Link>
+                  <p className="text-gray-500 font-urdu mb-4">اس زمرے میں ابھی کوئی مضمون موجود نہیں ہے۔</p>
+                  <Link to="/ask" className="text-primary hover:underline font-medium">سوال پوچھیں - {category.title}</Link>
                 </div>
               )}
             </section>
@@ -118,7 +118,7 @@ export default function Category() {
                 {category.subcategories.map(sub => (
                   <li key={sub}>
                     <Link to={`/search?q=${sub.toLowerCase()}`} className="text-gray-600 hover:text-primary text-sm flex items-center font-urdu">
-                      <ChevronRight size={14} className="mr-2 flex-shrink-0 text-primary/50" />
+                      <ChevronLeft size={14} className="mr-2 flex-shrink-0 text-primary/50" />
                       <span>{sub}</span>
                     </Link>
                   </li>
@@ -127,8 +127,8 @@ export default function Category() {
             </div>
 
             <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10 text-center">
-              <h3 className="text-lg font-bold text-charcoal mb-2 font-urdu">Sawal Poochiye</h3>
-              <p className="text-sm text-gray-600 mb-4 font-urdu">Apna masla mufti sahiban se samajhne ke liye sawal bhejein.</p>
+              <h3 className="text-lg font-bold text-charcoal mb-2 font-urdu">سوال پوچھیں</h3>
+              <p className="text-sm text-gray-600 mb-4 font-urdu">اپنا مسئلہ مفتی صاحبان سے سمجھنے کے لیے سوال بھیجیں۔</p>
               <Link to="/ask" className="block w-full bg-primary hover:bg-primary-dark text-white font-medium py-2 rounded-lg transition-colors text-sm">
                 Ask a Question
               </Link>
